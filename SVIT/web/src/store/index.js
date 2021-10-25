@@ -1,8 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {createSlice} from '@reduxjs/toolkit';
 
-const tokenSlice = createSlice({
-    name: 'token',
+const tmp = createSlice({
+    name: 'svStore',
     initialState: {
         listProduct: [] 
     },
@@ -12,10 +12,10 @@ const tokenSlice = createSlice({
         }
     }
 })
-export const storeListSV = tokenSlice.actions;
+export const storeListSV = tmp.actions;
 
 const store = configureStore({
-    reducer: {token: tokenSlice.reducer}
+    reducer: {svStore: tmp.reducer}
 })
 
 export default store;

@@ -1,5 +1,5 @@
 import React,  {useRef} from "react";
-import { postQlsvToAPI } from '../../API';
+import { AddStudent } from '../../API';
 
 const AddQlsv = () =>{
     const Hoten = useRef();
@@ -9,7 +9,7 @@ const AddQlsv = () =>{
     const sdt = useRef();
     const email = useRef();
     const DiaChi = useRef();
-
+    
 
     const submit= async (e) =>{
         e.preventDefault();
@@ -23,7 +23,7 @@ const AddQlsv = () =>{
             
         }
 
-        let status = await postQlsvToAPI( data);
+        let status = await AddStudent( data);
         if(status.statusText=== "OK"){
             alert('Thêm thông tin sinh viên thành công!');
 
@@ -49,7 +49,7 @@ const AddQlsv = () =>{
                         </li>
                         <li>
                             <span>Giới tính</span>
-                            <input ref={GioiTinh} type="radio" value="1" />Nam
+                            <input ref={GioiTinh} type="radio" value="1" checked="cheked" />Nam
                             <input rel={GioiTinh} type="radio" value="2"/>Nữ
 
                         </li>
@@ -66,7 +66,7 @@ const AddQlsv = () =>{
                             <input ref={email} type="email" placeholder='Nhập email ' />
                         </li>
                         <li>
-                            <span>địa chỉ</span>
+                            <span>Địa chỉ</span>
                             <input ref={DiaChi} type="text" placeholder='Nhập địa chỉ ' />
                         </li>
                         

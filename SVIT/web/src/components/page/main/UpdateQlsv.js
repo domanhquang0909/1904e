@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
-import { putQlsvToAPI } from '../../API';
+import { UpdateStudent } from '../../API';
 import './UpdateQlsv.css';
 
 const UpdateQlsv = () => {
-    const listSV = useSelector(state=>state.token.listProduct);
+    const listSV = useSelector(state=>state.svStore.listProduct);
     const idParams = useParams();
     const data = listSV.filter(sv=>sv.id.toString() === idParams.updateId.toString())[0];
     const Hoten = useRef();
@@ -19,8 +19,8 @@ const UpdateQlsv = () => {
 
     const submitHandle = async e => {
         e.preventDefault();
-        
-        const result = await putQlsvToAPI(data.id, {
+        console.log(parseInt(GioiTinh.current.value));
+        const result = await UpdateStudent(data.id, {
             "id":data.id,
             "Hoten": Hoten.current.value,
             "GioiTinh": parseInt(GioiTinh.current.value),
@@ -53,8 +53,8 @@ const UpdateQlsv = () => {
                         </li>
                         <li>
                             <span>Giới tính</span>
-                            <input ref={GioiTinh} type="radio" defaultValue="1" />Nam
-                            <input ref={GioiTinh} type="radio" defaultValue="2" />Nữ
+                            <input ref={GioiTinh} type="radio" id="rdoNam" name="GioiTinh" defaultValue="1" checked={data.GioiTinh === 1 ? "checked" : ""}/>Nam
+                            <input ref={GioiTinh} type="radio" id="rdoNu" name="GioiTinh" defaultValue="2"  />Nữ
                         </li>
                         <li>
                             <span>Ngày sinh:</span>

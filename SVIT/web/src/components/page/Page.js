@@ -16,6 +16,9 @@ const page = () => {
                     <Route path="/page" exact>
                         <Redirect to="/page/qlsv" />
                     </Route>
+                    <Route path="/" exact>
+                        <Main />
+                    </Route>
                     <Route path="/page/qlsv" exact>
                         <Main />
                     </Route>

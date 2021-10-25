@@ -1,14 +1,10 @@
 import axios from 'axios';
 
-const URL_API_GET_QLSV = "http://localhost:3002/sinh-viens";
 
-const URL_API_POST_QLSV = "http://localhost:3002/sinh-viens";
-
-
-export async function getPostFromAPI() {
+export async function GetStudents() {
     const respones = await axios ({
         method: 'GET',
-        url: URL_API_GET_QLSV,
+        url: 'http://localhost:3002/sinh-viens',
         headers: {
             'content-type': 'application/json',
         }
@@ -17,11 +13,11 @@ export async function getPostFromAPI() {
     
 }
 
-export async function postQlsvToAPI(data) {
+export async function AddStudent(data) {
     console.log(JSON.stringify(data));
     const respones = await axios ({
         method: 'POST',
-        url: URL_API_POST_QLSV,
+        url: 'http://localhost:3002/sinh-viens',
         headers: {
             'content-type': 'application/json',
         },
@@ -30,7 +26,7 @@ export async function postQlsvToAPI(data) {
     return respones;
     
 }
-export async function deleteQlsvToAPI(data) {
+export async function DeleteStudent(data) {
     const respones = await axios ({
         method: 'DELETE',
         url: `http://localhost:3002/sinh-viens/${data}`,
@@ -42,7 +38,7 @@ export async function deleteQlsvToAPI(data) {
     
 }
 
-export async function putQlsvToAPI( id, data) {
+export async function UpdateStudent( id, data) {
     console.log(JSON.stringify(data));
     const respones = await axios ({
         method: 'PUT',
@@ -55,3 +51,5 @@ export async function putQlsvToAPI( id, data) {
     return respones;
     
 }
+
+
